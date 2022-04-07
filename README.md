@@ -1,9 +1,3 @@
-# ZJU-nCov-Hitcarder-Sample
-
-浙大nCov肺炎健康打卡定时自动脚本 
-
-forked from [Tishacy/ZJU-nCov-Hitcarder](https://github.com/Tishacy/ZJU-nCov-Hitcarder)
-
 # Sample .yml
 
 ```yml
@@ -20,6 +14,17 @@ forked from [Tishacy/ZJU-nCov-Hitcarder](https://github.com/Tishacy/ZJU-nCov-Hit
          serverchan_key: ${{ secrets.SERVERCHAN_KEY }}
 ```
 
-# Sample Repository
-
-https://github.com/Long0x0/ZJU-nCov-Hitcarder-Sample
+# 一些记录
+## 当打卡表变动时  
+打开这个网页，查看源码
+https://healthreport.zju.edu.cn/ncov/wap/default/index
+将
+<ul> 
+...
+...
+...
+</ul> 
+这一段
+复制到form.txt 
+覆盖掉原来的表，
+手动打卡一次后即可继续自动打卡
