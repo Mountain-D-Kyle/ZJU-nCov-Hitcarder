@@ -24,6 +24,7 @@ https://healthreport.zju.edu.cn/ncov/wap/default/index
 ...  
 ...  
 \</ul\>   
-这一段，复制到form.txt  
-覆盖掉原来的表，  
+这一段，复制到桌面新建的form.txt中，用UTF-8格式保存。
+注意不能多或者少任意一个字符，必须是\<ul\>...\</ul\>完整的字符  
+然后删掉库里的form.txt,把本地的form.txt传上去  
 手动打卡一次后即可继续自动打卡  
