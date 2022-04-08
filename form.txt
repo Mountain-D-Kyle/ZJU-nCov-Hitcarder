@@ -1,0 +1,373 @@
+<ul>
+                        <li>
+                            <div class="text">
+                                <span>今日日期 Date<i style="display: none;" class="icon iconfont icon-shuoming"></i></span>
+                                <input v-model="date" readonly type="text" placeholder=""></div>
+                        </li>
+                        <li>
+                            <div class="text">
+                                <span>姓名 Name<i style="display: none;" class="icon iconfont icon-shuoming"></i></span>
+                                <input v-model="realname" readonly type="text" placeholder=""></div>
+                        </li>
+                        <li>
+                            <div class="text">
+                                <span>学工号 Student/Staff ID No.<i style="display: none;" class="icon iconfont icon-shuoming"></i></span>
+                                <input v-model="number" readonly type="text" placeholder=""></div>
+                        </li>
+
+                        <li>
+                            <div name="sfyxjzxgym" class="radio"><span>是否意向接种?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+                                    <div @click="info.sfyxjzxgym=1"><span :class="{active: info.sfyxjzxgym==1}"><i></i></span> <span>是 Yes</span></div>
+                                    <div @click="info.sfyxjzxgym=0"><span :class="{active: (info.sfyxjzxgym===0 || info.sfyxjzxgym==='0')}"><i></i></span> <span>否 No</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div name="sfbyjzrq" class="radio"><span>是否是不宜接种人群?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+                                    <div @click="info.sfbyjzrq=1"><span :class="{active: info.sfbyjzrq==1}"><i></i></span> <span>对疫苗成分过敏</span></div>
+                                    <div @click="info.sfbyjzrq=2"><span :class="{active: info.sfbyjzrq==2}"><i></i></span> <span>患急性疾病者</span></div>
+                                    <div @click="info.sfbyjzrq=3"><span :class="{active: info.sfbyjzrq==3}"><i></i></span> <span>处于慢性疾病的急性发作期者</span></div>
+                                    <div @click="info.sfbyjzrq=4"><span :class="{active: info.sfbyjzrq==4}"><i></i></span> <span>妊娠期妇女</span></div>
+                                    <div @click="info.sfbyjzrq=5"><span :class="{active: info.sfbyjzrq==5}"><i></i></span> <span>否</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div name="jzxgymqk" class="radio"><span>当前接种情况<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+                                    <div @click="info.jzxgymqk=1"><span :class="{active: info.jzxgymqk==1}"><i></i></span> <span>已接种第一针</span></div>
+<!--                                    <div @click="info.jzxgymqk=2"><span :class="{active: info.jzxgymqk==2}"><i></i></span> <span>已完成接种</span></div>-->
+                                    <div @click="info.jzxgymqk=4"><span :class="{active: info.jzxgymqk==4}"><i></i></span> <span>已接种第二针（已满6个月）</span></div>
+                                    <div @click="info.jzxgymqk=5"><span :class="{active: info.jzxgymqk==5}"><i></i></span> <span>已接种第二针（未满6个月）</span></div>
+                                    <div @click="info.jzxgymqk=6"><span :class="{active: info.jzxgymqk==6}"><i></i></span> <span>已接种第三针</span></div>
+                                    <div @click="info.jzxgymqk=3"><span :class="{active: info.jzxgymqk==3}"><i></i></span> <span>未接种</span></div>
+                                </div>
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <div name="sffrqjwdg" class="radio"><span>今日是否因发热请假未到岗（教职工）或未返校（学生）？ Are you on leave due to fever?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+                                    <div @click="info.sffrqjwdg=1"><span :class="{active: info.sffrqjwdg==1}"><i></i></span> <span>是 Yes</span></div>
+                                    <div @click="info.sffrqjwdg=0"><span :class="{active: (info.sffrqjwdg===0 || info.sffrqjwdg==='0')}"><i></i></span> <span>否 No</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div name="sfqtyyqjwdg" class="radio"><span>今日是否因发热外的其他原因请假未到岗（教职工）或未返校（学生）？ Are you on leave due to other symptoms except fever?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+                                    <div @click="info.sfqtyyqjwdg=1"><span :class="{active: info.sfqtyyqjwdg==1}"><i></i></span> <span>是 Yes</span></div>
+                                    <div @click="info.sfqtyyqjwdg=0"><span :class="{active: (info.sfqtyyqjwdg===0 || info.sfqtyyqjwdg==='0')}"><i></i></span> <span>否 No</span></div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div name="tw" class="radio"><span>今日是否有发热症状（高于37.2 ℃）？ Do you have a fever(above 37.2℃) today?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+
+                                    <div @click="info.tw='1'"><span :class="{active: info.tw==='1'}"><i></i></span> <span>是 Yes</span></div>
+                                    <div @click="info.tw='0'"><span :class="{active: info.tw==='0'}"><i></i></span> <span>否 No</span></div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div name="sfyqjzgc" class="radio"><span>今日是否被当地管理部门要求在集中隔离点医学观察？ Have you been isolated by the local authorities at centralized isolation point for medical observation today?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+                                    <div @click="info.sfyqjzgc=1"><span :class="{active: info.sfyqjzgc==1}"><i></i></span> <span>是 Yes</span></div>
+                                    <div @click="info.sfyqjzgc=0"><span :class="{active: info.sfyqjzgc==0}"><i></i></span> <span>否 No</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div name="sfcyglq" class="radio"><span @click="titlebtn()">今日是否居家隔离观察（居家非隔离状态填否）? Have you been in self-isolation at home today (select No if you are just stay at home but not isolated)?<i class="icon iconfont icon-shuoming"></i><em>（点击查看居家隔离观察定义 click to read the definition of it）</em></span>
+                                <div>
+                                    <div @click="info.sfcyglq=1"><span :class="{active: info.sfcyglq==1}"><i></i></span> <span>是 Yes</span></div>
+                                    <div @click="info.sfcyglq=0"><span :class="{active: info.sfcyglq==0}"><i></i></span> <span>否 No</span></div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li v-if="info.sfcyglq==1">
+                            <div class="text">
+                                <span>观察开始时间 The start time<i class="icon iconfont icon-shuoming"></i></span>
+                                <input name="glksrq" v-model="info.glksrq" type="date" placeholder=""></div>
+                        </li>
+
+
+
+
+                        <li>
+                            <div name="sfcxzysx" class="radio"><span>是否有任何与疫情相关的，值得注意的情况？ Do you have any situation related to the epidemic that deserves attention?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+                                    <div @click="info.sfcxzysx=1"><span :class="{active: info.sfcxzysx==1}"><i></i></span> <span>是 Yes</span></div>
+                                    <div @click="info.sfcxzysx=0"><span :class="{active: info.sfcxzysx==0}"><i></i></span> <span>否 No</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li v-if="info.sfcxzysx==1">
+                            <div class="multiText"><span>情况说明 Situation explanation<i class="icon iconfont icon-shuoming"></i></span>
+                                <div><textarea v-model="info.qksm" name="qksm" rows="" cols="" placeholder=""></textarea></div>
+                            </div>
+                        </li>
+                        <li v-if="info.sfcxzysx==1">
+                            <div class="multiText"><span>其他信息 Other information<i style="display: none;" class="icon iconfont icon-shuoming"></i></span>
+                                <div><textarea v-model="info.remark" name="remark" rows="" cols="" placeholder=""></textarea></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div name="campus" class="radio"><span>所在校区 Campus<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+                                    <div @click="info.campus='紫金港校区'"><span :class="{active: info.campus==='紫金港校区'}"><i></i></span> <span>紫金港校区</span></div>
+                                    <div @click="info.campus='玉泉校区'"><span :class="{active: info.campus==='玉泉校区'}"><i></i></span> <span>玉泉校区</span></div>
+                                    <div @click="info.campus='西溪校区'"><span :class="{active: info.campus==='西溪校区'}"><i></i></span> <span>西溪校区</span></div>
+                                    <div @click="info.campus='华家池校区'"><span :class="{active: info.campus==='华家池校区'}"><i></i></span> <span>华家池校区</span></div>
+                                    <div @click="info.campus='之江校区'"><span :class="{active: info.campus==='之江校区'}"><i></i></span> <span>之江校区</span></div>
+                                    <div @click="info.campus='海宁校区'"><span :class="{active: info.campus==='海宁校区'}"><i></i></span> <span>海宁校区</span></div>
+                                    <div @click="info.campus='舟山校区'"><span :class="{active: info.campus==='舟山校区'}"><i></i></span> <span>舟山校区</span></div>
+                                    <div @click="info.campus='宁波校区'"><span :class="{active: info.campus==='宁波校区'}"><i></i></span> <span>宁波校区</span></div>
+                                    <div @click="info.campus='工程师学院'"><span :class="{active: info.campus==='工程师学院'}"><i></i></span> <span>工程师学院</span></div>
+                                    <div @click="info.campus='杭州国际科创中心'"><span :class="{active: info.campus==='杭州国际科创中心'}"><i></i></span> <span>杭州国际科创中心</span></div>
+                                    <div @click="info.campus='其他'"><span :class="{active: info.campus==='其他'}"><i></i></span> <span>其他</span></div>
+                                </div>
+                            </div>
+                        </li>
+                         <li>
+                                <div name="sfsqhzjkk" class="radio"><span>是否已经申领校区所在地健康码？Have you got the health code of the city where the campus is located？<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                    <div>
+                                        <div @click="info.sfsqhzjkk='1'"><span :class="{active: info.sfsqhzjkk==='1'}"><i></i></span> <span>是 Yes</span></div>
+                                        <div @click="info.sfsqhzjkk='0'"><span :class="{active: info.sfsqhzjkk==='0'}"><i></i></span> <span>否 No</span></div>
+                                    </div>
+                                </div>
+                            </li>
+                             <li v-if="info.sfsqhzjkk==1">
+                                <div name="sqhzjkkys" class="radio"><span>今日申领校区所在地健康码的颜色？What's the color of today's health code？<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                    <div>
+                                        <div @click="info.sqhzjkkys=1"><span :class="{active: info.sqhzjkkys==1}"><i></i></span> <span>绿码 Green code</span></div>
+                                        <div @click="info.sqhzjkkys=2"><span :class="{active: info.sqhzjkkys==2}"><i></i></span> <span>红码 Red code</span></div>
+                                        <div @click="info.sqhzjkkys=3"><span :class="{active: info.sqhzjkkys==3}"><i></i></span> <span>黄码 Yellow code</span></div>
+                                        <div @click="info.sqhzjkkys=4"><span :class="{active: info.sqhzjkkys==4}"><i></i></span> <span>橙码 Orange code</span></div>
+                                        
+                                    </div>
+                                </div>
+                            </li>
+
+
+                        <li>
+                            <div name="sfzx" class="radio"><span>今日是否在校？ Are you on campus today?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+                                    <div @click="setSfzx('1')"><span :class="{active: info.sfzx==='1'}"><i></i></span> <span>是 Yes</span></div>
+                                    <div @click="setSfzx('0')"><span :class="{active: info.sfzx==='0'}"><i></i></span> <span>否 No</span></div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li v-if="showFxyy" style="display: none;">
+                            <div class="multiText"><span>返校原因<i class="icon iconfont icon-shuoming"></i></span>
+                                <div><textarea v-model="info.fxyy" name="fxyy" rows="" cols="" placeholder=""></textarea></div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div name="sfzgn" class="radio"><span>所在地点 Your Location<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+                                    <div @click="setSfzgn(1)"><span :class="{active: sfzgn==1}"><i></i></span> <span>境内 in Chinese Mainland</span></div>
+                                    <div @click="setSfzgn(0)"><span :class="{active: sfzgn==0}"><i></i></span> <span>境外 outside Chinese Mainland</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li v-show="!ipCtrl1 && sfzgn == 0" name="dwszgj">
+                            <div class="text" @click="mapInit()">
+                                <span>所在地点（请打开手机位置功能，并在手机权限设置中选择允许访问位置信息）Your location (Please turn on the location access function on your mobile phone and allow App to access your location)<i class="icon iconfont icon-shuoming"></i></span>
+                                <input name="szgjcs" v-model="info.szgjcs" readonly type="text" placeholder="点击获取地理位置(Click to get your location)"></div>
+                        </li>
+                        <li v-show="ipCtrl1 && sfzgn == 0">
+                            <div class="text">
+                                <div class="hcqbtn-wrap">
+                                    <select class="hcqbtn" name="szgj" id="szgj">
+                                        <option value="">请选择所在地区/国家</option>
+                                        <option v-for='p in country' :value="p.name">{{p.name}} {{p.ename}}</option>
+                                    </select>
+                                    <input v-model="info.gwszgzcs" type="text" placeholder="所在城市 City" class="hcqbtn" name="gwszgzcs">
+
+                                </div>
+                            </div>
+                        </li>
+                        <li v-show="!ipCtrl && sfzgn == 1">
+                            <div name="area" class="text" style="cursor: pointer" @click="getLocation()">
+                                <span>所在地点（请打开手机位置功能，并在手机权限设置中选择允许访问位置信息）Your location (Please turn on the location access function on your mobile phone and allow App to access your location)<i class="icon iconfont icon-shuoming"></i></span>
+                                <input v-model="info.area" readonly type="text" placeholder="点击获取地理位置 Click to get geographic location"></div>
+                        </li>
+
+                        <li v-show="false && ipCtrl && sfzgn == 1" name="ip">
+                            <div class="text">
+                                <div class="hcqbtn-wrap">
+                                    <select class="hcqbtn hcqbtn-danger" v-model='jtszd.myprovice' @change="handleChangeCity()">
+                                        <option value="">请选择</option>
+                                        <option v-for='p in Allprovice' :value="p.name">{{p.name}}</option>
+                                    </select>
+
+                                    <select class="hcqbtn hcqbtn-warning" v-model='jtszd.mycity' @change="handleChangeArea()">
+                                        <option value="">请选择</option>
+                                        <option v-for='c in Allcity' :value="c.name">{{c.name}}</option>
+                                    </select>
+                                    <select class="hcqbtn hcqbtn-primary" v-model="jtszd.myarea" v-if="Allarea.length>0" @change="handleChange()">
+                                        <option value="">请选择</option>
+                                        <option v-for='a in Allarea' :value="a">{{a}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </li>
+                        <li v-if="info.ismoved == 1">
+                            <div name="bztcyy" class="radio"><span>当前地点与上次不在同一城市，原因如下 Current location is different from last time，why？<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+                                    <div @click="info.bztcyy=2"><span :class="{active: info.bztcyy==2}"><i></i></span> <span>探亲 Visit relatives</span></div>
+                                    <div @click="info.bztcyy=3"><span :class="{active: info.bztcyy==3}"><i></i></span> <span>旅游 Travel</span></div>
+                                    <div @click="info.bztcyy=4"><span :class="{active: info.bztcyy==4}"><i></i></span> <span>回家 Return home</span></div>
+                                    <div @click="info.bztcyy=5"><span :class="{active: info.bztcyy==5}"><i></i></span> <span>返校 Return to school</span></div>
+                                    <div @click="info.bztcyy=6"><span :class="{active: info.bztcyy==6}"><i></i></span> <span>出差 On a business trip</span></div>
+                                    <div @click="info.bztcyy=1"><span :class="{active: info.bztcyy==1}"><i></i></span> <span>其他 Others</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="display: none;">
+                            <div name="jrdqtlqk" class="radio"><span>你是否从以下地区返回浙江（含经停）? Did you return to Zhejiang from the following areas (including stopovers)？<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+<!--                                    <div @click="getdqtlqk('1')"><span :class="{active: info.jrdqtlqk.indexOf('1')>-1}"><i></i></span> <span>武汉 Wuhan</span></div>-->
+<!--                                    <div @click="getdqtlqk('2')"><span :class="{active: info.jrdqtlqk.indexOf('2')>-1}"><i></i></span> <span>湖北（除武汉） Hubei (non-Wuhan regions)</span></div>-->
+<!--                                    <div @click="getdqtlqk('3')"><span :class="{active: info.jrdqtlqk.indexOf('3')>-1}"><i></i></span> <span>哈尔滨市 Harbin</span></div>-->
+<!--                                    <div @click="getdqtlqk('4')"><span :class="{active: info.jrdqtlqk.indexOf('4')>-1}"><i></i></span> <span>绥芬河市 Suifenhe</span></div>-->
+<!--                                    <div @click="getdqtlqk('5')"><span :class="{active: info.jrdqtlqk.indexOf('5')>-1}"><i></i></span> <span>满洲里市 Manzhouli</span></div>-->
+<!--                                    <div @click="getdqtlqk('6')"><span :class="{active: info.jrdqtlqk.indexOf('6')>-1}"><i></i></span> <span>广州市 Guangzhou</span></div>-->
+<!--                                    <div @click="getdqtlqk('7')"><span :class="{active: info.jrdqtlqk.indexOf('7')>-1}"><i></i></span> <span>深圳市 Shenzhen</span></div>-->
+<!--                                    <div @click="getdqtlqk('8')"><span :class="{active: info.jrdqtlqk.indexOf('8')>-1}"><i></i></span> <span>揭阳市 Jieyang</span></div>-->
+<!--                                    <div @click="getdqtlqk('9')"><span :class="{active: info.jrdqtlqk.indexOf('9')>-1}"><i></i></span> <span>吉林市 Jilin</span></div>-->
+<!--                                    <div @click="getdqtlqk('10')"><span :class="{active: info.jrdqtlqk.indexOf('10')>-1}"><i></i></span> <span>北京市 Beijing</span></div>-->
+                                    <div @click="getdqtlqk('11')"><span :class="{active: info.jrdqtlqk.indexOf('11')>-1}"><i></i></span> <span>7月10日后从乌鲁木齐返回 Urumchi after July 10th</span></div>
+<!--                                    <div @click="getdqtlqk('12')"><span :class="{active: info.jrdqtlqk.indexOf('12')>-1}"><i></i></span> <span>7月15日后从大连返回 Dalian after July 15th</span></div>-->
+                                    <div @click="getdqtlqk('13')"><span :class="{active: info.jrdqtlqk.indexOf('13')>-1}"><i></i></span> <span>8月15日后从汕尾市陆丰市返回Lufeng after Augest 15th</span></div>
+                                    <div @click="getdqtlqk('0')"><span :class="{active: info.jrdqtlqk.indexOf('0')>-1}"><i></i></span> <span>否 None of the above</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li v-if="sfzgn== 1">
+                            <div name="sfymqjczrj" class="radio"><span>本人家庭成员(包括其他密切接触人员)是否有近14日入境或近14日拟入境的情况？Have your family members (including other close contact persons）entered Chinese Mainland over the past 14 days or plan to enter Chinese Mainland in 14 days?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+                                    <div @click="info.sfymqjczrj=1"><span :class="{active: info.sfymqjczrj==1}"><i></i></span> <span>是 Yes，请及时向所在单位报告实际情况。please contact your college/school immediately</span></div>
+                                    <div @click="info.sfymqjczrj=0"><span :class="{active: (info.sfymqjczrj===0 || info.sfymqjczrj === '0')}"><i></i></span> <span>否 No</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li v-show="sfzgn == 0">
+                            <div class="multiText"><span>近14日到访过的国家/地区 Countries you’ve visited over the past 14 days<i class="icon iconfont icon-shuoming"></i></span>
+                                <div><textarea v-model="info.zjdfgj" name="zjdfgj" rows="" cols="" placeholder="多个用逗号隔开（如德国，荷兰）separate by commas if more than one country (eg: Germany, Netherlands)"></textarea></div>
+                            </div>
+                        </li>
+                        <li v-show="sfzgn == 0">
+                            <div name="sfyrjjh" class="radio"><span>未来14天内是否有入境计划? Do you have plan to enter Chinese Mainland in the next 14 days?<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+                                    <div @click="info.sfyrjjh=1"><span :class="{active: info.sfyrjjh==1}"><i></i></span> <span>是 Yes</span></div>
+                                    <div @click="info.sfyrjjh=0"><span :class="{active: info.sfyrjjh==0}"><i></i></span> <span>否 No</span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
+                            <div name="cfgj" class="text">
+                                <span>出发国家或地区 Departure country or region?<i class="icon iconfont icon-shuoming"></i></span>
+                                <div>
+                                    <select class="hcqbtn" v-model='info.cfgj' name="cfgj" id="cfgj" style="display: block;width: 100%;">
+                                        <option value="">请选择国家或地区 Scroll down to select country or region</option>
+                                        <option v-for='p in country' :value="p.name">{{p.name}} {{p.ename}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
+                            <div class="multiText"><span>途经国家/地区（直航填无）Transit Country/region? (Enter “no” if direct flights).<i class="icon iconfont icon-shuoming"></i></span>
+                                <div><textarea v-model="info.tjgj" name="tjgj" rows="" cols="" placeholder="多个用逗号隔开（如德国，荷兰）separate by commas if more than one country (eg: Germany, Netherlands)"></textarea></div>
+                            </div>
+                        </li>
+                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
+                            <div class="text">
+                                <span>拟入境日期（北京时间） Planned date of arrival<i class="icon iconfont icon-shuoming"></i></span>
+                                <input name="nrjrq" v-model="info.nrjrq" type="date" placeholder=""></div>
+                        </li>
+                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
+                            <div class="text">
+                                <span>入境口岸 Port of Entry<i class="icon iconfont icon-shuoming"></i></span>
+                                <input name="rjka" v-model="info.rjka" type="text" placeholder="输入入境口岸（城市） enter port of entry (city)"></div>
+                        </li>
+                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
+                            <div name="jnmdd" class="text">
+                                <span>境内目的地 Destination in Chinese Mainland<i class="icon iconfont icon-shuoming"></i></span>
+                                <div class="hcqbtn-wrap">
+                                    <select class="hcqbtn hcqbtn-danger" v-model='info.jnmddsheng' @change="handleChangeCityt(info.jnmddsheng)">
+                                        <option value="">请选择</option>
+                                        <option v-for='p in Allprovice' :value="p.name">{{p.name}}</option>
+                                    </select>
+
+                                    <select class="hcqbtn hcqbtn-warning" v-model='info.jnmddshi' @change="handleChangeAreat(info.jnmddshi)">
+                                        <option value="">请选择</option>
+                                        <option v-for='c in Allcityt' :value="c.name">{{c.name}}</option>
+                                    </select>
+                                    <select class="hcqbtn hcqbtn-primary" v-model="info.jnmddqu" v-show="Allareat.length>0">
+                                        <option value="">请选择</option>
+                                        <option v-for='a in Allareat' :value="a">{{a}}</option>
+                                    </select>
+
+                                </div>
+                                <input name="jnmddxiangxi" v-model="info.jnmddxiangxi" type="text" placeholder="详细地址 Detailed address" class="hcqbtn-wrap-input">
+                            </div>
+                        </li>
+                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
+                            <div name="rjjtfs" class="radio"><span>入境交通方式 Mode of transport by which you enter Chinese Mainland<i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+                                    <div @click="info.rjjtfs=1"><span :class="{active: info.rjjtfs==1}"><i></i></span> <span>飞机 By plane</span></div>
+                                    <div @click="info.rjjtfs=2"><span :class="{active: info.rjjtfs == 2}"><i></i></span> <span>火车 By train</span></div>
+                                    <div @click="info.rjjtfs=4"><span :class="{active: info.rjjtfs == 4}" style="position: relative;top: 0.2rem;"><i></i></span> <span style="position: relative;top: 0.1rem;">其他 Other</span>
+                                    <input name="rjjtfs1" type="text" v-model="info.rjjtfs1" placeholder="请输入 Please enter" class="hcqbtn" style="margin-left: 0.2rem;width: 60%;">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
+                            <div class="text">
+                                <span>入境交通工具班次（航班号，火车车次） Details of the inbound transportation (Flight number, train number)<i class="icon iconfont icon-shuoming"></i></span>
+                                <input name="rjjtgjbc" v-model="info.rjjtgjbc" type="text" placeholder="多个用逗号隔开 Separate by commas if more than one"></div>
+                        </li>
+                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
+                            <div name="jnjtfs" class="radio"><span>境内交通方式 Mode of transport in Chinese Mainland <i class="icon iconfont icon-shuoming"></i><em></em></span>
+                                <div>
+                                    <div @click="info.jnjtfs=1"><span :class="{active: info.jnjtfs==1}"><i></i></span> <span>飞机 By plane</span></div>
+                                    <div @click="info.jnjtfs=2"><span :class="{active: info.jnjtfs == 2}"><i></i></span> <span>火车 By train</span></div>
+                                    <div @click="info.jnjtfs=3"><span :class="{active: info.jnjtfs == 3}"><i></i></span> <span>汽车 By coach</span></div>
+                                    <div @click="info.jnjtfs=4"><span :class="{active: info.jnjtfs == 4}" style="position: relative;top: 0.2rem;"><i></i></span> <span style="position: relative;top: 0.1rem;">其他 Other</span>
+                                        <input name="jnjtfs1" type="text" v-model="info.jnjtfs1" placeholder="请输入 Please enter" class="hcqbtn" style="margin-left: 0.2rem;width: 60%;">
+                                </div>
+                            </div>
+                        </li>
+                        <li v-show="sfzgn == 0 && info.sfyrjjh == 1">
+                            <div class="text">
+                                <span>境内交通工具班次（航班号，火车车次，汽车牌照） Transportation details in Chinese Mainland (Flight number, train number, license plate)<i class="icon iconfont icon-shuoming"></i></span>
+                                <input name="jnjtgjbc" v-model="info.jnjtgjbc" type="text" placeholder="多个用逗号隔开 Separate by commas if more than one"></div>
+                        </li>
+                        <li>
+                             <div name="sfqrxxss" class="radio">
+                                <div>
+                                    <div @click="info.sfqrxxss = 1"><span  :class="{active: info.sfqrxxss == 1}">
+                                            <i></i></span> <span>本人承诺：</br>
+                                        上述信息真实准确。如有变化，及时更新相关信息并报告所在单位。</br>
+                                        本人已知晓并将遵守政府和学校相关规定，配合做好疫情防控工作。</br>
+                                            I agree:</br>
+                                            The above information is true and accurate. In case of changes, I will keep my information updated and report in a timely manner.</br>
+                                            I have understood and will abide by the relevant government and University regulations to facilitate the prevention and control of COVID-19 epidemic.</br>
+                                        </span></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
