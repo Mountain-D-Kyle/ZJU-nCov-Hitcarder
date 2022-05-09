@@ -29,6 +29,14 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: 'Set up Python'
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: 'Install requirements'
+        run: pip3 install -r ./requirements.txt
     - name: Working
       env:
         USERNAME: ${{ inputs.username }}
@@ -37,7 +45,5 @@ runs:
         SERVERCHAN_KEY: ${{ inputs.serverchan_key }}
         PUSHPLUS_TOKEN: ${{ inputs.pushplus_token }}
       run: |
-        cd ${{ github.action_path }}
-        pip install -r ./requirements.txt
         python3 ./hitcarder.py
       shell: bash
