@@ -136,7 +136,7 @@ class HitCarder(object):
         new_info['area'] = old_info['area']
         new_info['city'] = old_info['city']
         new_info['sqhzjkkys'] = 1 #健康码：绿码
-        new_info['tw'] = 0 # #发热：无
+        new_info['tw'] = '0' # #发热：无
         new_info['internship'] =1 #实践：不实习
         new_info['sfcxzysx'] =0 # 涉疫情的管控措施：无
         new_info['sfjcbh'] =0 #接触的情况：无
